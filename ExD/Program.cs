@@ -4,30 +4,26 @@ namespace ExD
 {
     internal class Program
     {
-        private static void SomeActionMethod(MenuItem menuItem)
-        {
-            Console.WriteLine($"Вы нажали: {menuItem.Name}");
-        }
-
         static void Main(string[] args)
         {
             var dictionary = new MyDictionary("e - r");
 
             MenuCategory menuCategory = new MenuCategory("Главное меню", new MenuItem[]
             {
-                new MenuItemMyDictionary("Добавить слово и его перевод", Input.AddWordTranslate),
-                new MenuItemPrint("Вывести словарь", dictionary.Print),
+                new MenuItemMyDictionary("Добавить слово или его перевод", Input.AddWordTranslation),
+                new MenuItemMyDictionary("Искать перевод", Input.SearchTranslation),
+                new MenuItemPrintDel("Вывести словарь", dictionary.Print),
                 new MenuCategory("Удалить", new MenuItem[]
                 {
                     new MenuItemMyDictionary("Удалить слово", Input.DelWord),
-                    new MenuItemMyDictionary("Удалить перевод", Input.DelTranslate),
-                    new MenuItemPrint("Удалить словарь", dictionary.Del),
+                    new MenuItemMyDictionary("Удалить перевод", Input.DelTranslatation),
+                    new MenuItemPrintDel("Удалить словарь", dictionary.Del),
                     new MenuBack()
                 }),
                 new MenuCategory("Заменить", new MenuItem[]
                 {
                     new MenuItemMyDictionary("Заменить слово", Input.ReplacementWord),
-                    new MenuAction("Заменить перевод", SomeActionMethod),
+                    new MenuItemMyDictionary("Заменить перевод", Input.ReplacementTranslation),
                     new MenuBack()
                 }),
                 new MenuBack("Выход")

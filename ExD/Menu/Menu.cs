@@ -52,17 +52,16 @@ namespace ExD
                                 current = category;
                                 Console.Clear();
                                 break;
-                            case MenuAction action:
-                                action.Action(action);
-                                break;
                             case MenuItemMyDictionary menuMyDictionary:
                                 menuMyDictionary.Action(myDictionary);
+                                Console.ResetColor();
                                 Console.WriteLine("Для продолжения нажмите Enter");
                                 Console.ReadLine();
                                 Console.Clear();
                                 break;
-                            case MenuItemPrint menuItemPrint:
+                            case MenuItemPrintDel menuItemPrint:
                                 menuItemPrint.Action();
+                                Console.ResetColor();
                                 Console.WriteLine("Для продолжения нажмите Enter");
                                 Console.ReadLine();
                                 Console.Clear();

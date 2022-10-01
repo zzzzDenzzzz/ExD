@@ -2,11 +2,11 @@
 
 namespace ExD
 {
-    internal class MenuItemPrint : MenuItem
+    internal class MenuItemPrintDel : MenuItem
     {
         public Action Action { get; }
 
-        public MenuItemPrint(string name, Action action) : base(name)
+        public MenuItemPrintDel(string name, Action action) : base(name)
         {
             Action = action;
         }

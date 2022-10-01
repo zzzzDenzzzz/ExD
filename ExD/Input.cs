@@ -5,15 +5,17 @@ namespace ExD
     internal class Input
     {
         static string word;
-        static string translate;
+        static string translation;
+        static string newWord;
+        static string newTranslation;
 
-        public static void AddWordTranslate(MyDictionary myDictionary)
+        public static void AddWordTranslation(MyDictionary myDictionary)
         {
             Console.Write("Слово: ");
             word = Console.ReadLine();
             Console.Write("Перевод: ");
-            translate = Console.ReadLine();
-            myDictionary.Add(word, translate);
+            translation = Console.ReadLine();
+            myDictionary.Add(word, translation);
         }
 
         public static void ReplacementWord(MyDictionary myDictionary)
@@ -21,8 +23,19 @@ namespace ExD
             Console.Write("Слово: ");
             word = Console.ReadLine();
             Console.Write("Новое слово: ");
-            translate = Console.ReadLine();
-            myDictionary.ReplacementWord(word, translate);
+            newWord = Console.ReadLine();
+            myDictionary.ReplacementWord(word, newWord);
+        }
+
+        public static void ReplacementTranslation(MyDictionary myDictionary)
+        {
+            Console.Write("Слово: ");
+            word = Console.ReadLine();
+            Console.Write("Перевод: ");
+            translation = Console.ReadLine();
+            Console.Write("Новый перевод: ");
+            newTranslation = Console.ReadLine();
+            myDictionary.ReplacementTranslation(word, translation, newTranslation);
         }
 
         public static void DelWord(MyDictionary myDictionary)
@@ -32,13 +45,20 @@ namespace ExD
             myDictionary.DelWord(word);
         }
 
-        public static void DelTranslate(MyDictionary myDictionary)
+        public static void DelTranslatation(MyDictionary myDictionary)
         {
             Console.Write("Слово: ");
             word = Console.ReadLine();
             Console.Write("Перевод: ");
-            translate = Console.ReadLine();
-            myDictionary.DelTranslate(word, translate);
+            translation = Console.ReadLine();
+            myDictionary.DelTranslate(word, translation);
+        }
+
+        public static void SearchTranslation(MyDictionary myDictionary)
+        {
+            Console.Write("Слово: ");
+            word = Console.ReadLine();
+            myDictionary.SearchTranslation(word);
         }
     }
 }
