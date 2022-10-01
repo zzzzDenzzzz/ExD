@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Input.cs" />
-    <Compile Include="MenuItemMyDictionary\MenuItemAdd.cs" />
+    <Compile Include="MenuItemMyDictionary\MenuItemMyDictionary.cs" />
     <Compile Include="MenuItemMyDictionary\MenuItemPrint.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Menu\MenuAction.cs" />

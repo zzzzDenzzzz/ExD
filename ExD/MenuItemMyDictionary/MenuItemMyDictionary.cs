@@ -2,11 +2,11 @@
 
 namespace ExD
 {
-    internal class MenuItemAdd : MenuItem
+    internal class MenuItemMyDictionary : MenuItem
     {
         public Action<MyDictionary> Action { get; }
 
-        public MenuItemAdd(string name, Action<MyDictionary> action) : base(name)
+        public MenuItemMyDictionary(string name, Action<MyDictionary> action) : base(name)
         {
             Action = action;
         }

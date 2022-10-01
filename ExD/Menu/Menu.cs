@@ -55,7 +55,7 @@ namespace ExD
                             case MenuAction action:
                                 action.Action(action);
                                 break;
-                            case MenuItemAdd menuMyDictionary:
+                            case MenuItemMyDictionary menuMyDictionary:
                                 menuMyDictionary.Action(myDictionary);
                                 Console.WriteLine("Для продолжения нажмите Enter");
                                 Console.ReadLine();

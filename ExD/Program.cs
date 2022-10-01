@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExD
 {
@@ -19,21 +15,19 @@ namespace ExD
 
             MenuCategory menuCategory = new MenuCategory("Главное меню", new MenuItem[]
             {
-                new MenuItemAdd("Добавить слово и его перевод", Input.InputWordTranslate),
+                new MenuItemMyDictionary("Добавить слово и его перевод", Input.AddWordTranslate),
                 new MenuItemPrint("Вывести словарь", dictionary.Print),
-                new MenuAction("Пункт 2", SomeActionMethod),
-                new MenuAction("Пункт 3", SomeActionMethod),
-                new MenuCategory("Подменю 1", new MenuItem[]
+                new MenuCategory("Удалить", new MenuItem[]
                 {
-                    new MenuAction("Пункт 1.1", SomeActionMethod),
-                    new MenuAction("Пункт 1.2", SomeActionMethod),
-                    new MenuAction("Пункт 1.3", SomeActionMethod),
+                    new MenuItemMyDictionary("Удалить слово", Input.DelWord),
+                    new MenuItemMyDictionary("Удалить перевод", Input.DelTranslate),
+                    new MenuItemPrint("Удалить словарь", dictionary.Del),
                     new MenuBack()
                 }),
-                new MenuCategory("Подменю 2", new MenuItem[]
+                new MenuCategory("Заменить", new MenuItem[]
                 {
-                    new MenuAction("Пункт 2.1", SomeActionMethod),
-                    new MenuAction("Пункт 2.2", SomeActionMethod),
+                    new MenuItemMyDictionary("Заменить слово", Input.ReplacementWord),
+                    new MenuAction("Заменить перевод", SomeActionMethod),
                     new MenuBack()
                 }),
                 new MenuBack("Выход")

@@ -14,10 +14,8 @@ namespace ExD
             dictionary = new SortedList<string, List<string>>() { };
         }
 
-        public bool Add(string word, string translate)
+        public void Add(string word, string translate)
         {
-            bool wordExist = false;
-
             if (dictionary.ContainsKey(word))
             {
                 if (!dictionary[word].Contains(translate))
@@ -26,27 +24,99 @@ namespace ExD
                 }
                 else
                 {
-                    Console.WriteLine("Слово с таким переводом уже существует. Попробуйте еще раз");
-                    wordExist = true;
+                    Console.WriteLine($"Слово [{word}] с переводом [{translate}] уже существует");
                 }
             }
             else
             {
                 dictionary.Add(word, new List<string> { translate });
             }
-            return wordExist;
         }
 
-        public void ReplacementTranslete(string word, string translate)
+        public void ReplacementWord(string word, string newWord)
         {
             if (dictionary.ContainsKey(word))
             {
-                dictionary.K
+                if (!dictionary.ContainsKey(newWord))
+                {
+                    List<string> tmpList = dictionary[word];
+                    dictionary.Remove(word);
+                    dictionary.Add(newWord, tmpList);
+                }
+                else
+                {
+                    Console.WriteLine($"Слово [{newWord}] уже есть в словаре");
+                }
             }
             else
             {
-                Console.WriteLine("В словаре нет такого слова");
+                Console.WriteLine($"В словаре нет слова {word}");
             }
+        }
+
+        //public void ReplacementTranslete(string word, string translate)
+        //{
+        //    if (dictionary.ContainsKey(word))
+        //    {
+        //        if (!dictionary[word].Contains(translate))
+        //        {
+
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("Перевод уже существует");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("В словаре нет такого слова");
+        //    }
+        //}
+
+        public void DelWord(string word)
+        {
+            if (dictionary.ContainsKey(word))
+            {
+                dictionary.Remove(word);
+                Console.WriteLine($"Слово {word} удалено");
+            }
+            else
+            {
+                Console.WriteLine($"В словаре нет слова {word}");
+            }
+        }
+
+        public void DelTranslate(string word, string translate)
+        {
+            if (dictionary.ContainsKey(word))
+            {
+                if (dictionary[word].Contains(translate))
+                {
+                    if (dictionary[word].Count > 1)
+                    {
+                        dictionary[word].Remove(translate);
+                        Console.WriteLine($"Перевод [{translate}] слова {word} удален");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Перевод [{translate}] слова {word} удалить невозможно, т.к. это последний вариант перевода");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"В словаре нет перевода [{translate}] для слова [{word}]");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"В словаре нет слова {word}");
+            }
+        }
+
+        public void Del()
+        {
+            dictionary.Clear();
+            Console.WriteLine($"Словарь {TypeDictionary} удален");
         }
 
         public void Print()
