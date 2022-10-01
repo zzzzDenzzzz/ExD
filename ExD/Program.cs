@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ExD
+﻿namespace ExD
 {
     internal class Program
     {
