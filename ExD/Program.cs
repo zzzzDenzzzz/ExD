@@ -8,30 +8,39 @@ namespace ExD
 {
     internal class Program
     {
+        private static void SomeActionMethod(MenuItem menuItem)
+        {
+            Console.WriteLine($"Вы нажали: {menuItem.Name}");
+        }
+
         static void Main(string[] args)
         {
-            var d = new MyDictionary("e - r");
-            var d1 = MyDictionary.CreateDictionary("r - e");
-            try
-            {
-                d.Add("word2", "перевод0");
-                d.Add("word1", "перевод0");
-                d.Add("word0", "перевод0");
-                d.Add("word0", "перевод1");
-                d.Add("word2", "перевод1");
-                d.Print();
+            var dictionary = new MyDictionary("e - r");
 
-                d1.Add("слово2", "translete0");
-                d1.Add("слово1", "translete0");
-                d1.Add("слово0", "translete0");
-                d1.Add("слово0", "translete1");
-                d1.Add("слово2", "translete1");
-                d1.Print();
-            }
-            catch (ArgumentException argEx)
+            MenuCategory menuCategory = new MenuCategory("Главное меню", new MenuItem[]
             {
-                Console.WriteLine(argEx.Message);
-            }
+                new MenuItemAdd("Добавить слово и его перевод", Input.InputWordTranslate),
+                new MenuItemPrint("Вывести словарь", dictionary.Print),
+                new MenuAction("Пункт 2", SomeActionMethod),
+                new MenuAction("Пункт 3", SomeActionMethod),
+                new MenuCategory("Подменю 1", new MenuItem[]
+                {
+                    new MenuAction("Пункт 1.1", SomeActionMethod),
+                    new MenuAction("Пункт 1.2", SomeActionMethod),
+                    new MenuAction("Пункт 1.3", SomeActionMethod),
+                    new MenuBack()
+                }),
+                new MenuCategory("Подменю 2", new MenuItem[]
+                {
+                    new MenuAction("Пункт 2.1", SomeActionMethod),
+                    new MenuAction("Пункт 2.2", SomeActionMethod),
+                    new MenuBack()
+                }),
+                new MenuBack("Выход")
+            });
+
+            Menu menu = new Menu(menuCategory, dictionary);
+            menu.Run();
         }
     }
 }

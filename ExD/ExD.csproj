@@ -43,6 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Input.cs" />
+    <Compile Include="MenuItemMyDictionary\MenuItemAdd.cs" />
+    <Compile Include="MenuItemMyDictionary\MenuItemPrint.cs" />
+    <Compile Include="Menu\Menu.cs" />
+    <Compile Include="Menu\MenuAction.cs" />
+    <Compile Include="Menu\MenuBack.cs" />
+    <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="Menu\MenuCategory.cs" />
     <Compile Include="MyDictionary.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -50,5 +58,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

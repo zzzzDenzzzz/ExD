@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExD
 {
@@ -17,13 +14,10 @@ namespace ExD
             dictionary = new SortedList<string, List<string>>() { };
         }
 
-        public static MyDictionary CreateDictionary(string typeDictionary)
+        public bool Add(string word, string translate)
         {
-            return new MyDictionary(typeDictionary);
-        }
+            bool wordExist = false;
 
-        public void Add(string word, string translate)
-        {
             if (dictionary.ContainsKey(word))
             {
                 if (!dictionary[word].Contains(translate))
@@ -32,12 +26,26 @@ namespace ExD
                 }
                 else
                 {
-                    throw new ArgumentException("error: class MyDictionary->Add->if->if()");
+                    Console.WriteLine("Слово с таким переводом уже существует. Попробуйте еще раз");
+                    wordExist = true;
                 }
             }
             else
             {
                 dictionary.Add(word, new List<string> { translate });
+            }
+            return wordExist;
+        }
+
+        public void ReplacementTranslete(string word, string translate)
+        {
+            if (dictionary.ContainsKey(word))
+            {
+                dictionary.K
+            }
+            else
+            {
+                Console.WriteLine("В словаре нет такого слова");
             }
         }
 
