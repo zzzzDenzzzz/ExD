@@ -51,7 +51,7 @@ namespace ExD
             word = Console.ReadLine();
             Console.Write("Перевод: ");
             translation = Console.ReadLine();
-            myDictionary.DelTranslate(word, translation);
+            myDictionary.DelTranslation(word, translation);
         }
 
         public static void SearchTranslation(MyDictionary myDictionary)

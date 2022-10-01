@@ -109,7 +109,7 @@ namespace ExD
             }
         }
 
-        public void DelTranslate(string word, string translation)
+        public void DelTranslation(string word, string translation)
         {
             if (dictionary.ContainsKey(word))
             {
