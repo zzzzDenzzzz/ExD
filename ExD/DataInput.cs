@@ -8,6 +8,7 @@ namespace ExD
         static string translation;
         static string newWord;
         static string newTranslation;
+        static string typeDictionary;
 
         public static void AddWordTranslation(MyDictionary myDictionary)
         {
@@ -66,6 +67,13 @@ namespace ExD
             Console.Write("Слово: ");
             word = Console.ReadLine();
             myDictionary.ExportWordToFile(word);
+        }
+
+        public static void CreateDictionary(MyDictionary myDictionary)
+        {
+            Console.Write("Тип словаря: ");
+            typeDictionary = Console.ReadLine();
+            myDictionary.CreateDictionary(typeDictionary);
         }
     }
 }

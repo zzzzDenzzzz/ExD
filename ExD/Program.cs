@@ -4,11 +4,10 @@
     {
         static void Main(string[] args)
         {
-            var dictionary = new MyDictionary("e - r");
-
+            var dictionary = new MyDictionary();
             MenuCategory menuCategory = new MenuCategory("Главное меню", new MenuItem[]
             {
-                new MenuItemMyDictionary("Создать словарь", DataInput.AddWordTranslation),
+                new MenuItemMyDictionary("Создать словарь", DataInput.CreateDictionary),
                 new MenuItemMyDictionary("Выбрать словарь", DataInput.AddWordTranslation),
                 new MenuCategory("Работа со словарем", new MenuItem[]
                 {

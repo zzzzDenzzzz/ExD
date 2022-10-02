@@ -15,6 +15,11 @@ namespace ExD
             dictionary = new SortedList<string, List<string>>() { };
         }
 
+        public MyDictionary()
+        {
+            dictionary = new SortedList<string, List<string>>() { };
+        }
+
         void ColorMessage(ConsoleColor background, ConsoleColor foreground)
         {
             Console.BackgroundColor = background;
@@ -24,7 +29,12 @@ namespace ExD
         SortedList<string, List<string>> DownloadDictionary()
         {
             dictionary = new SortedList<string, List<string>>() { };
-            string path = $"{TypeDictionary}.txt";
+            string directory = "list_dictionaries";
+            if (!Directory.Exists(directory))
+            {
+                throw new Exception("Directory not found");
+            }
+            string path = $"{directory}\\{TypeDictionary}.txt";
 
             string[] readText;
             string key;
@@ -46,8 +56,12 @@ namespace ExD
                     }
                 }
             }
-
             return dictionary;
+        }
+
+        public MyDictionary CreateDictionary(string typeDictionary)
+        {
+            return new MyDictionary(typeDictionary);
         }
 
         public void Add(string word, string translation)
@@ -213,7 +227,12 @@ namespace ExD
 
         public void SaveDictionaryToFile()
         {
-            string path = $"{TypeDictionary}.txt";
+            string directory = "list_dictionaries";
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            string path = $"{directory}\\{TypeDictionary}.txt";
 
             var fileStream = new FileStream(path, FileMode.Create);
 
