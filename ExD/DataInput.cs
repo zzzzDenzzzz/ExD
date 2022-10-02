@@ -2,7 +2,7 @@
 
 namespace ExD
 {
-    internal class Input
+    internal class DataInput
     {
         static string word;
         static string translation;
@@ -59,6 +59,13 @@ namespace ExD
             Console.Write("Слово: ");
             word = Console.ReadLine();
             myDictionary.SearchTranslation(word);
+        }
+
+        public static void ExportWordToFile(MyDictionary myDictionary)
+        {
+            Console.Write("Слово: ");
+            word = Console.ReadLine();
+            myDictionary.ExportWordToFile(word);
         }
     }
 }

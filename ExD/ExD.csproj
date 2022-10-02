@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Input.cs" />
+    <Compile Include="DataInput.cs" />
     <Compile Include="MenuItemMyDictionary\MenuItemMyDictionary.cs" />
     <Compile Include="MenuItemMyDictionary\MenuItemPrintDel.cs" />
     <Compile Include="Menu\Menu.cs" />

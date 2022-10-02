@@ -14,6 +14,14 @@ namespace ExD
             this.myDictionary = myDictionary;
         }
 
+        void SetOfMethods()
+        {
+            Console.ResetColor();
+            Console.WriteLine("Для продолжения нажмите Enter");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
         public void Run()
         {
             Stack<MenuCategory> wayBack = new Stack<MenuCategory>();
@@ -54,21 +62,16 @@ namespace ExD
                                 break;
                             case MenuItemMyDictionary menuMyDictionary:
                                 menuMyDictionary.Action(myDictionary);
-                                Console.ResetColor();
-                                Console.WriteLine("Для продолжения нажмите Enter");
-                                Console.ReadLine();
-                                Console.Clear();
+                                SetOfMethods();
                                 break;
                             case MenuItemPrintDel menuItemPrint:
                                 menuItemPrint.Action();
-                                Console.ResetColor();
-                                Console.WriteLine("Для продолжения нажмите Enter");
-                                Console.ReadLine();
-                                Console.Clear();
+                                SetOfMethods();
                                 break;
                             case MenuBack _:
                                 if (wayBack.Count == 0)
-                                { 
+                                {
+                                    myDictionary.SaveDictionaryToFile();
                                     return;
                                 }
                                 MenuCategory parent = wayBack.Pop();

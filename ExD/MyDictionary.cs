@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace ExD
 {
@@ -18,6 +19,35 @@ namespace ExD
         {
             Console.BackgroundColor = background;
             Console.ForegroundColor = foreground;
+        }
+
+        SortedList<string, List<string>> DownloadDictionary()
+        {
+            dictionary = new SortedList<string, List<string>>() { };
+            string path = $"{TypeDictionary}.txt";
+
+            string[] readText;
+            string key;
+            if (File.Exists(path))
+            {
+                readText = File.ReadAllLines(path);
+                for (int i = 0; i < readText.Length; i++)
+                {
+                    key = readText[i].Trim('[', ']');
+                    if (readText[i].StartsWith("["))
+                    {
+                        dictionary.Add(key, new List<string> { });
+                        i++;
+                        while (!readText[i].Equals("<end_line>"))
+                        {
+                            dictionary[key].Add(readText[i]);
+                            i++;
+                        }
+                    }
+                }
+            }
+
+            return dictionary;
         }
 
         public void Add(string word, string translation)
@@ -178,6 +208,53 @@ namespace ExD
                     Console.WriteLine(itemValue);
                 }
                 Console.WriteLine();
+            }
+        }
+
+        public void SaveDictionaryToFile()
+        {
+            string path = $"{TypeDictionary}.txt";
+
+            var fileStream = new FileStream(path, FileMode.Create);
+
+            using (StreamWriter writer = new StreamWriter(fileStream))
+            {
+                foreach (var itemKey in dictionary)
+                {
+                    writer.WriteLine($"[{itemKey.Key}]");
+                    foreach (var itemValue in itemKey.Value)
+                    {
+                        writer.WriteLine(itemValue);
+                    }
+                    writer.WriteLine("<end_line>");
+                }
+            }
+        }
+
+        public void ExportWordToFile(string word)
+        {
+            string path = "word_and_translation.txt";
+
+            var fileStream = new FileStream(path, FileMode.Create);
+
+            using (StreamWriter writer = new StreamWriter(fileStream))
+            {
+                if (dictionary.ContainsKey(word))
+                {
+                    writer.WriteLine($"слово: {word}");
+                    writer.WriteLine("перевод:");
+                    foreach (var item in dictionary[word])
+                    {
+                        writer.WriteLine(item);
+                    }
+                    ColorMessage(background: ConsoleColor.Black, foreground: ConsoleColor.Green);
+                    Console.WriteLine($"Слово [{word}] и его перевод сохранены в файле {path}");
+                }
+                else
+                {
+                    ColorMessage(background: ConsoleColor.Black, foreground: ConsoleColor.Red);
+                    Console.WriteLine($"В словаре нет слова [{word}]");
+                }
             }
         }
     }
