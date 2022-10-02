@@ -8,6 +8,7 @@ namespace ExD
     {
         public string TypeDictionary { get; }
         SortedList<string, List<string>> dictionary;
+        MyDictionary CurrentDictionary { get; set; } = null;
 
         public MyDictionary(string typeDictionary)
         {
@@ -17,7 +18,7 @@ namespace ExD
 
         public MyDictionary()
         {
-            dictionary = new SortedList<string, List<string>>() { };
+           dictionary = DownloadDictionary();
         }
 
         void ColorMessage(ConsoleColor background, ConsoleColor foreground)
@@ -61,7 +62,7 @@ namespace ExD
 
         public MyDictionary CreateDictionary(string typeDictionary)
         {
-            return new MyDictionary(typeDictionary);
+            return CurrentDictionary = new MyDictionary(typeDictionary);
         }
 
         public void Add(string word, string translation)
