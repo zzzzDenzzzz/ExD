@@ -223,11 +223,11 @@ namespace ExD
             }
         }
 
-        public void Del()
+        public void Clear()
         {
             dictionary.Clear();
             ColorMessage(background: ConsoleColor.Black, foreground: ConsoleColor.Green);
-            Console.WriteLine($"Словарь {TypeDictionary} удален");
+            Console.WriteLine($"Словарь {TypeDictionary} очищен");
         }
 
         public void Print()

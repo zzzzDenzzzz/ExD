@@ -89,9 +89,9 @@ namespace ExD
             myDictionary.Print();
         }
 
-        public static void Del(MyDictionary myDictionary)
+        public static void Clear(MyDictionary myDictionary)
         {
-            myDictionary.Del();
+            myDictionary.Clear();
         }
     }
 }

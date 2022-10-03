@@ -18,7 +18,7 @@
                     {
                         new MenuItemMyDictionary("Удалить слово", DataInput.DelWord),
                         new MenuItemMyDictionary("Удалить перевод", DataInput.DelTranslatation),
-                        new MenuItemMyDictionary("Очистить словарь", DataInput.Del),
+                        new MenuItemMyDictionary("Очистить словарь", DataInput.Clear),
                         new MenuBack()
                     }),
                     new MenuCategory("Заменить", new MenuItem[]
