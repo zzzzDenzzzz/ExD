@@ -2,7 +2,7 @@
 
 namespace ExD
 {
-    internal class DataInput
+    internal static class DataInput
     {
         static string word;
         static string translation;
