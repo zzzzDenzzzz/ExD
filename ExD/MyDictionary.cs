@@ -26,6 +26,7 @@ namespace ExD
         {
             TypeDictionary = typeDictionary;
             this.dictionary = dictionary;
+            SaveDictionaryToFile();
         }
 
         void ColorMessage(ConsoleColor background, ConsoleColor foreground)
@@ -69,9 +70,17 @@ namespace ExD
 
         public MyDictionary CreateDictionary(string typeDictionary)
         {
+            if (File.Exists($"{DIRECTORY_DICTIONARY}\\{typeDictionary}.txt"))
+            {
+                ColorMessage(background: ConsoleColor.Black, foreground: ConsoleColor.Red);
+                Console.WriteLine($"Словарь с именем [{typeDictionary}] уже существует");
+                return new MyDictionary();
+            }
             SaveDictionaryToFile();
             dictionary = new SortedList<string, List<string>>();
             TypeDictionary = typeDictionary;
+            ColorMessage(background: ConsoleColor.Black, foreground: ConsoleColor.Green);
+            Console.WriteLine($"Словарь с именем [{typeDictionary}] создан");
             return new MyDictionary(typeDictionary, dictionary);
         }
 
@@ -284,6 +293,34 @@ namespace ExD
                     ColorMessage(background: ConsoleColor.Black, foreground: ConsoleColor.Red);
                     Console.WriteLine($"В словаре нет слова [{word}]");
                 }
+            }
+        }
+
+        public void PrintExistsDictionary()
+        {
+            if (Directory.Exists(DIRECTORY_DICTIONARY))
+            {
+                foreach (var item in Directory.EnumerateFiles(DIRECTORY_DICTIONARY))
+                {
+                    string line = item.Remove(startIndex: 0, DIRECTORY_DICTIONARY.Length + 1);
+                    Console.WriteLine(line.Substring(startIndex: 0, line.Length - ".txt".Length));
+                }
+            }
+        }
+
+        public void DownloadDictionary(string typeDictionary)
+        {
+            if (File.Exists($"{DIRECTORY_DICTIONARY}\\{typeDictionary}.txt"))
+            {
+                TypeDictionary = typeDictionary;
+                dictionary = DownloadDictionary();
+                ColorMessage(background: ConsoleColor.Black, foreground: ConsoleColor.Green);
+                Console.WriteLine($"Словаря с именем [{typeDictionary}] загружен");
+            }
+            else
+            {
+                ColorMessage(background: ConsoleColor.Black, foreground: ConsoleColor.Red);
+                Console.WriteLine($"Словаря с именем [{typeDictionary}] не существует");
             }
         }
     }

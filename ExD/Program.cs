@@ -7,6 +7,7 @@
             MenuCategory menuCategory = new MenuCategory("Главное меню", new MenuItem[]
             {
                 new MenuItemMyDictionary("Создать словарь", DataInput.CreateDictionary),
+                new MenuItemMyDictionary("Загрузить словарь", DataInput.DownloadDictionary),
                 new MenuCategory("Работа со словарем", new MenuItem[]
                 {
                     new MenuItemMyDictionary("Добавить слово или его перевод", DataInput.AddWordTranslation),
@@ -17,7 +18,7 @@
                     {
                         new MenuItemMyDictionary("Удалить слово", DataInput.DelWord),
                         new MenuItemMyDictionary("Удалить перевод", DataInput.DelTranslatation),
-                        new MenuItemMyDictionary("Удалить словарь", DataInput.Del),
+                        new MenuItemMyDictionary("Очистить словарь", DataInput.Del),
                         new MenuBack()
                     }),
                     new MenuCategory("Заменить", new MenuItem[]

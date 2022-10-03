@@ -76,6 +76,14 @@ namespace ExD
             myDictionary.CreateDictionary(typeDictionary);
         }
 
+        public static void DownloadDictionary(MyDictionary myDictionary)
+        {
+            myDictionary.PrintExistsDictionary();
+            Console.Write("Тип словаря: ");
+            typeDictionary = Console.ReadLine();
+            myDictionary.DownloadDictionary(typeDictionary);
+        }
+
         public static void Print(MyDictionary myDictionary)
         {
             myDictionary.Print();
