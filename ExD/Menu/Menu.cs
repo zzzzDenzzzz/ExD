@@ -7,10 +7,12 @@ namespace ExD
     {
         MenuCategory current;
         MyDictionary myDictionary;
+        string DictionaryCurrent { get; }
 
-        public Menu(MenuCategory root)
+        public Menu(MenuCategory root, string dictionaryCurrent)
         {
             current = root;
+            DictionaryCurrent = dictionaryCurrent;
             myDictionary = new MyDictionary();
         }
 
@@ -22,10 +24,16 @@ namespace ExD
             Console.Clear();
         }
 
+        void Message() => Console.WriteLine($"По умолчанию загружен словарь {DictionaryCurrent}{Environment.NewLine}");
+
         public void Run()
         {
             Stack<MenuCategory> wayBack = new Stack<MenuCategory>();
             int index = 0;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Message();
+            SetOfMethods();
             while (true)
             {
                 DrawMenu(0, 0, index);
