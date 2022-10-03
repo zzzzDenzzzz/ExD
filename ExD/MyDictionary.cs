@@ -6,19 +6,26 @@ namespace ExD
 {
     internal class MyDictionary
     {
-        public string TypeDictionary { get; }
+        const string DIRECTORY_DICTIONARY = "list_dictionaries";
+        public string TypeDictionary { get; set; } = "rus - eng";
         SortedList<string, List<string>> dictionary;
-        MyDictionary CurrentDictionary { get; set; } = null;
-
-        public MyDictionary(string typeDictionary)
-        {
-            TypeDictionary = typeDictionary;
-            dictionary = new SortedList<string, List<string>>() { };
-        }
 
         public MyDictionary()
         {
-           dictionary = DownloadDictionary();
+            if (Directory.Exists(DIRECTORY_DICTIONARY))
+            {
+                dictionary = DownloadDictionary();
+            }
+            else
+            {
+                dictionary = new SortedList<string, List<string>>() { };
+            }
+        }
+
+        MyDictionary(string typeDictionary, SortedList<string, List<string>> dictionary)
+        {
+            TypeDictionary = typeDictionary;
+            this.dictionary = dictionary;
         }
 
         void ColorMessage(ConsoleColor background, ConsoleColor foreground)
@@ -30,12 +37,12 @@ namespace ExD
         SortedList<string, List<string>> DownloadDictionary()
         {
             dictionary = new SortedList<string, List<string>>() { };
-            string directory = "list_dictionaries";
-            if (!Directory.Exists(directory))
+
+            if (!Directory.Exists(DIRECTORY_DICTIONARY))
             {
                 throw new Exception("Directory not found");
             }
-            string path = $"{directory}\\{TypeDictionary}.txt";
+            string path = $"{DIRECTORY_DICTIONARY}\\{TypeDictionary}.txt";
 
             string[] readText;
             string key;
@@ -62,7 +69,10 @@ namespace ExD
 
         public MyDictionary CreateDictionary(string typeDictionary)
         {
-            return CurrentDictionary = new MyDictionary(typeDictionary);
+            SaveDictionaryToFile();
+            dictionary = new SortedList<string, List<string>>();
+            TypeDictionary = typeDictionary;
+            return new MyDictionary(typeDictionary, dictionary);
         }
 
         public void Add(string word, string translation)
@@ -228,12 +238,11 @@ namespace ExD
 
         public void SaveDictionaryToFile()
         {
-            string directory = "list_dictionaries";
-            if (!Directory.Exists(directory))
+            if (!Directory.Exists(DIRECTORY_DICTIONARY))
             {
-                Directory.CreateDirectory(directory);
+                Directory.CreateDirectory(DIRECTORY_DICTIONARY);
             }
-            string path = $"{directory}\\{TypeDictionary}.txt";
+            string path = $"{DIRECTORY_DICTIONARY}\\{TypeDictionary}.txt";
 
             var fileStream = new FileStream(path, FileMode.Create);
 

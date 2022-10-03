@@ -44,9 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataInput.cs" />
-    <Compile Include="ListDictionaries.cs" />
     <Compile Include="MenuItemMyDictionary\MenuItemMyDictionary.cs" />
-    <Compile Include="MenuItemMyDictionary\MenuItemPrintDel.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Menu\MenuAction.cs" />
     <Compile Include="Menu\MenuBack.cs" />

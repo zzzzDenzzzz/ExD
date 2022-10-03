@@ -8,10 +8,10 @@ namespace ExD
         MenuCategory current;
         MyDictionary myDictionary;
 
-        public Menu(MenuCategory root, MyDictionary myDictionary)
+        public Menu(MenuCategory root)
         {
             current = root;
-            this.myDictionary = myDictionary;
+            myDictionary = new MyDictionary();
         }
 
         void SetOfMethods()
@@ -62,10 +62,6 @@ namespace ExD
                                 break;
                             case MenuItemMyDictionary menuMyDictionary:
                                 menuMyDictionary.Action(myDictionary);
-                                SetOfMethods();
-                                break;
-                            case MenuItemPrintDel menuItemPrint:
-                                menuItemPrint.Action();
                                 SetOfMethods();
                                 break;
                             case MenuBack _:

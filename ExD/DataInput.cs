@@ -75,5 +75,15 @@ namespace ExD
             typeDictionary = Console.ReadLine();
             myDictionary.CreateDictionary(typeDictionary);
         }
+
+        public static void Print(MyDictionary myDictionary)
+        {
+            myDictionary.Print();
+        }
+
+        public static void Del(MyDictionary myDictionary)
+        {
+            myDictionary.Del();
+        }
     }
 }
