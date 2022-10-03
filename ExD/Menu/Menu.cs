@@ -7,13 +7,13 @@ namespace ExD
     {
         MenuCategory current;
         MyDictionary myDictionary;
-        string DictionaryCurrent { get; }
+        string DictionaryDefault { get; }
 
-        public Menu(MenuCategory root, string dictionaryCurrent)
+        public Menu(MenuCategory root)
         {
             current = root;
-            DictionaryCurrent = dictionaryCurrent;
             myDictionary = new MyDictionary();
+            DictionaryDefault = myDictionary.TypeDictionary;
         }
 
         void SetOfMethods()
@@ -24,7 +24,7 @@ namespace ExD
             Console.Clear();
         }
 
-        void Message() => Console.WriteLine($"По умолчанию загружен словарь {DictionaryCurrent}{Environment.NewLine}");
+        void Message() => Console.WriteLine($"По умолчанию загружен словарь {DictionaryDefault}{Environment.NewLine}");
 
         public void Run()
         {

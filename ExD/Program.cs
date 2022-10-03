@@ -32,7 +32,7 @@
                 new MenuBack("Выход")
             });
 
-            Menu menu = new Menu(menuCategory, "rus - eng");
+            Menu menu = new Menu(menuCategory);
             menu.Run();
         }
     }
